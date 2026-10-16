@@ -12,19 +12,19 @@
 
   // Resume: plain download link. Only block it if the server says the file is missing (404).
   var note=document.getElementById('resume-note'),btns=document.querySelectorAll('[data-resume]');
-  function missing(){note.textContent='Resume file not found. Add your PDF at assets/resume.pdf (see README).';}
+  function missing(){note.textContent='Resume file not found. Add your PDF at resume.pdf (see README).';}
   if(window.RESUME_B64){ // hosted preview only: save through the viewer's download prompt
     btns.forEach(function(a){a.addEventListener('click',function(e){
       e.preventDefault();
       var raw=atob(window.RESUME_B64),u=new Uint8Array(raw.length);for(var i=0;i<raw.length;i++)u[i]=raw.charCodeAt(i);
       var blob=new Blob([u],{type:'application/pdf'});
       (window.claude?window.claude.use('downloads'):Promise.resolve(null)).then(function(d){
-        if(!d){note.textContent='Downloads are not available in this preview. The deployed site downloads assets/resume.pdf directly.';return;}
+        if(!d){note.textContent='Downloads are not available in this preview. The deployed site downloads resume.pdf directly.';return;}
         return d.save({filename:'Krunal-Mahajan-Resume.pdf',data:blob}).then(function(){note.textContent='Resume saved.';}).catch(function(err){if(!err||err.code!=='declined')note.textContent='Could not save the resume here.';});
       });
     });});
   } else if(location.protocol!=='file:'){
-    fetch('assets/resume.pdf',{method:'HEAD'}).then(function(r){
+    fetch('resume.pdf',{method:'HEAD'}).then(function(r){
       if(r.status===404){missing();btns.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();missing();location.hash='#resume';});});}
     }).catch(function(){});
   }

@@ -6,7 +6,8 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies, no secrets.
 index.html   page content
 styles.css   Minimal Red theme (colors are variables at the top)
 script.js    resume check, placeholder links, form validation
-assets/      put resume.pdf here
+resume.pdf   your resume (replace this file to update it)
+certificate-redynox.jpg   certificate image
 ```
 
 ## Run locally
@@ -31,8 +32,8 @@ then visit http://localhost:8000.
 4. After a minute the site is live at `https://<your-username>.github.io/portfolio/`.
 
 ## Update content
-- **Resume:** replace `assets/resume.pdf` with your latest PDF (keep the file name). Until the file exists, the page shows a "not found" message instead of a broken download.
-- **Projects:** edit the `<article class="card project">` blocks in `index.html`. Change status (Planned, In Progress, Completed), technologies, and replace `href="#"` and `[ADD REPOSITORY URL]` with real links. Add screenshots as `<img src="assets/name.png" alt="...">` inside the card.
+- **Resume:** replace `resume.pdf` with your latest PDF (keep the file name). Until the file exists, the page shows a "not found" message instead of a broken download.
+- **Projects:** edit the `<article class="card project">` blocks in `index.html`. Change status (Planned, In Progress, Completed), technologies, and replace `href="#"` and `[ADD REPOSITORY URL]` with real links. Add screenshots as `<img src="name.png" alt="...">` inside the card.
 - **Certificates:** in `index.html`, copy the commented TEMPLATE line inside `#earned`, fill it in, and delete the "No certificates" line. List only certificates you have earned, with a verification URL.
 
 ## Contact form
