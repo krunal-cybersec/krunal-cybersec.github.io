@@ -10,9 +10,8 @@
     } else { a.removeAttribute('data-ph'); }
   });
 
-  // Resume: plain download link. Only block it if the server says the file is missing (404).
+  // Resume: a plain download link (resume.pdf). The preview below saves it through the viewer instead.
   var note=document.getElementById('resume-note'),btns=document.querySelectorAll('[data-resume]');
-  function missing(){note.textContent='Resume file not found. Add your PDF at resume.pdf (see README).';}
   if(window.RESUME_B64){ // hosted preview only: save through the viewer's download prompt
     btns.forEach(function(a){a.addEventListener('click',function(e){
       e.preventDefault();
@@ -23,10 +22,6 @@
         return d.save({filename:'Krunal-Mahajan-Resume.pdf',data:blob}).then(function(){note.textContent='Resume saved.';}).catch(function(err){if(!err||err.code!=='declined')note.textContent='Could not save the resume here.';});
       });
     });});
-  } else if(location.protocol!=='file:'){
-    fetch('resume.pdf',{method:'HEAD'}).then(function(r){
-      if(r.status===404){missing();btns.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();missing();location.hash='#resume';});});}
-    }).catch(function(){});
   }
 
   // Certificate: open the image in an in-page viewer.

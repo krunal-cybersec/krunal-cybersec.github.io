@@ -32,7 +32,7 @@ then visit http://localhost:8000.
 4. After a minute the site is live at `https://<your-username>.github.io/portfolio/`.
 
 ## Update content
-- **Resume:** replace `resume.pdf` with your latest PDF (keep the file name). Until the file exists, the page shows a "not found" message instead of a broken download.
+- **Resume:** replace `resume.pdf` with your latest PDF (keep the file name). If the file is missing, the Download button will show a 404 error from GitHub, so make sure `resume.pdf` is uploaded in the main folder.
 - **Projects:** edit the `<article class="card project">` blocks in `index.html`. Change status (Planned, In Progress, Completed), technologies, and replace `href="#"` and `[ADD REPOSITORY URL]` with real links. Add screenshots as `<img src="name.png" alt="...">` inside the card.
 - **Certificates:** in `index.html`, copy the commented TEMPLATE line inside `#earned`, fill it in, and delete the "No certificates" line. List only certificates you have earned, with a verification URL.
 
